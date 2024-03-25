@@ -4,19 +4,23 @@ import LogIn from './Components/LogIn';
 import Registration from './Components/Registration';
 import NotFound from './Components/NotFound';
 import Dashboard from './Components/Dashboard';
+import Navigation from './Components/Navigation';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/login' element={<LogIn />} />
-        <Route path='/register' element={<Registration />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+    <>
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/login' element={<LogIn />} />
+          <Route path='/register' element={<Registration />} />
+          <Route path='/dashboard' element={<Dashboard />} />
 
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </Router>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
