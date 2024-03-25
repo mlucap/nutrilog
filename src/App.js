@@ -4,10 +4,12 @@ import LogIn from './Components/LogIn';
 import Registration from './Components/Registration';
 import NotFound from './Components/NotFound';
 import Dashboard from './Components/Dashboard';
+import NavBar from './Components/NavBar';
 
 function App() {
   return (
     <Router>
+      <NavBar/>
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/login' element={<LogIn />} />
