@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Navigate, useNavigate } from "react-router-dom";
+import "../css/LogIn.scss";
 
 
 const LogIn = () => {
@@ -56,6 +57,9 @@ const LogIn = () => {
         </Form.Group>
         <Button className="btn btn-dark" onClick={toProfile}>
           Log In
+        </Button>
+        <Button id="register" className="btn btn-light" onClick={() => navigate("/register")} >
+          Register
         </Button>
       </Form>
     </div>
