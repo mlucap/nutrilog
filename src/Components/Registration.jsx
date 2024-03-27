@@ -95,7 +95,7 @@ const Registration = () => {
         <Button
           id="register"
           className="btn btn-dark"
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate("/login")}
         >
           Register
         </Button>
