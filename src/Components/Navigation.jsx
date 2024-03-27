@@ -9,6 +9,8 @@ function Navigation() {
       <Container>
         <Navbar.Brand>
           <Link id="title" to="/">Nutrilog</Link>
+          
+          <Link id="title" to="/register">Registration</Link>
         </Navbar.Brand>
         <Navbar.Collapse>
           <Nav>
