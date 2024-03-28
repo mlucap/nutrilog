@@ -5,6 +5,7 @@ import Registration from './Components/Registration';
 import NotFound from './Components/NotFound';
 import Dashboard from './Components/Dashboard';
 import Navigation from './Components/Navigation';
+import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 
           <Route path='*' element={<NotFound />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );
