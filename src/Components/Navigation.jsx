@@ -10,12 +10,12 @@ function Navigation() {
         <Navbar.Brand>
           <Link id="title" to="/">Nutrilog</Link>
           
-          <Link id="title" to="/register">Registration</Link>
         </Navbar.Brand>
         <Navbar.Collapse>
           <Nav>
             <Link className="navLink" to='/dashboard'>Dashboard</Link>
-            <Link className="navLink enditem" to="/login">Login</Link>
+            <Link className="navLink" to="/login">Login</Link>
+            <Link className="navLink" to="/register">Register</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
