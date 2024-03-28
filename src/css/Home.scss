@@ -1,0 +1,58 @@
+html, body, #root{
+    height: 100%;
+    margin: 0;
+}
+#parent {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 85%;
+}
+
+.child {
+    height: 100%;
+}
+.dark {
+    background-color: #16324f;
+    color: white;
+}
+
+.colourViolet {
+    color: #81667a;
+}
+
+.left {
+    align-items: center;
+    flex-grow: 1;
+}
+
+.center {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+.homeTitleContainer {
+    margin: 15% auto auto 20%;
+    text-align: left;
+}
+
+#getStarted {
+    margin-top: 50%;
+}
+
+.right {
+    display: flex;
+}
+#imageContainer {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    justify-content: center;
+}
+
+#homeImage {
+    width: 100%;
+    height: auto;
+    max-width: 30vw;
+    border-radius: 3%;
+}
