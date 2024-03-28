@@ -10,7 +10,7 @@ function Home() {
 function Dashboard() {
   return (
     <>
-    <Tab.Container defaultActiveKey="first">
+    <Tab.Container defaultActiveKey="home">
         <div id='container'>
             <Row>
                 <Col sm={2}>

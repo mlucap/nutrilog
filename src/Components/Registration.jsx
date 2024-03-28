@@ -81,7 +81,7 @@ const Registration = () => {
         <Form.Group>
           <Form.Label>Gender:</Form.Label>
           <Form.Select>
-            <option>Open this selected menu</option>
+            <option>---</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
@@ -89,7 +89,7 @@ const Registration = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="forBasicCheckbox">
-          <Form.Check type="checkbox" label="I agree to terms and conditions" />
+          <Form.Check type="checkbox" label="I agree to terms and conditions"/>
         </Form.Group>
 
         <Button

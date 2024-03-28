@@ -36,7 +36,7 @@ const LogIn = () => {
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter @"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -46,14 +46,14 @@ const LogIn = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="forBasicCheckbox">
-          <Form.Check type="checkbox" label="RememberMe" />
+          <Form.Check type="checkbox" label="Remember Me" />
         </Form.Group>
         <Button className="btn btn-dark" onClick={toProfile}>
           Log In
