@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button, FormControl } from "react-bootstrap";
 import { Navigation, useNavigate } from "react-router-dom";
-import LogIn from "./LogIn";
+
 const Registration = () => {
   const navigate = useNavigate();
   const [inputValues, setInputValues] = useState({
