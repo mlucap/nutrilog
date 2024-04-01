@@ -27,15 +27,15 @@ const Home = (props) => {
 
           <div id="dashboardHomeMacros">
             <div className="macro">
-              <Image src='https://placehold.co/0' roundedCircle />
+              <h1>{props.carbs}/{props.carbGoal}g</h1>
               <h1>Carbs</h1>
             </div>
             <div className="macro">
-              <Image src='https://placehold.co/0' roundedCircle />
+              <h1>{props.protein}g</h1>
               <h1>Protein</h1>
             </div>
             <div className="macro">
-              <Image src='https://placehold.co/0' roundedCircle />
+              <h1>{props.fat}g</h1>
               <h1>Fat</h1>
             </div>
           </div>

@@ -9,6 +9,15 @@ import MyMeals from './Dashboard/MyMeals.jsx'
 
 function Dashboard() {
   const [key, setKey] = useState("home");
+
+  // state variables for macros
+  const [carbs, setCarbs] = useState(10);
+  const [protein, setProtein] = useState(9);
+  const [fat, setFat] = useState(12);
+
+  const [carbGoal, setCarbGoal] = useState(100);
+  const [proteinGoal, setProteinGoal] = useState(100);
+  const [fatGoal, setFatGoal] = useState(100);
   return (
     <>
     <Tab.Container defaultActiveKey={key} activeKey={key} onSelect={(k) => setKey(k)}>
@@ -43,7 +52,7 @@ function Dashboard() {
                 </Col>
                 <Col sm={9}>
                     <Tab.Content>
-                        <Tab.Pane eventKey="home"><Home setKey={setKey}/></Tab.Pane>
+                        <Tab.Pane eventKey="home"><Home setKey={setKey} carbs={carbs} protein={protein} fat={fat} carbGoal={carbGoal} proteinGoal={proteinGoal} fatGoal={fatGoal}/></Tab.Pane>
                         <Tab.Pane eventKey="profile"><Profile /></Tab.Pane>
                         <Tab.Pane eventKey="logFood"><LogFood /></Tab.Pane>
                         <Tab.Pane eventKey="myMeals"><MyMeals /></Tab.Pane>
