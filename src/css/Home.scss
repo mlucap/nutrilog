@@ -1,3 +1,5 @@
+@import "../css/utilities";
+
 html, body, #root{
     height: 100%;
     margin: 0;
@@ -12,12 +14,12 @@ html, body, #root{
     height: 100%;
 }
 .dark {
-    background-color: #16324f;
+    background-color: $primary;
     color: white;
 }
 
 .colourViolet {
-    color: #81667a;
+    color: $violet;
 }
 
 .left {

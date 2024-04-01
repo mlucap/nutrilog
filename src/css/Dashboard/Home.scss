@@ -1,0 +1,49 @@
+@import '../../css/utilities';
+#dashboardWelcomeGrid {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+#dashboardHomeWelcome {
+    border-radius: 1em;
+    background-color: $primary;
+    margin: 0.5em;
+    color: white;
+    padding: 1em;
+}
+
+#dashboardHomeDay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    border-radius: 1em;
+    color: white;
+    margin: 0.5em;
+    flex-direction: column;
+}
+
+#dashboardHomeMacros {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+    margin: 1em;
+}
+
+.macro {
+    display: flex;
+    background-color: $violet;
+    border-radius: 1em;
+    padding: 1em;
+    color: white;
+}
+
+.macro > h1 {
+    margin-left: 0.5em;
+}
+
+#dashboardHomeButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
