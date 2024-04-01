@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Tab, Nav, Image} from 'react-bootstrap'
+import { useState } from 'react'
 import "../css/Dashboard.scss"
 import Home from "./Dashboard/Home.jsx"
 import Profile from './Dashboard/Profile.jsx'
@@ -7,9 +8,10 @@ import LogFood from './Dashboard/LogFood.jsx'
 import MyMeals from './Dashboard/MyMeals.jsx'
 
 function Dashboard() {
+  const [key, setKey] = useState("home");
   return (
     <>
-    <Tab.Container defaultActiveKey="home">
+    <Tab.Container defaultActiveKey={key} activeKey={key} onSelect={(k) => setKey(k)}>
         <div id='container'>
             <Row>
                 <Col sm={2}>
@@ -26,7 +28,7 @@ function Dashboard() {
                 <Col sm={2}>
                     <Nav variant='pills' className='flex-column'>
                         <Nav.Item>
-                            <Nav.Link  eventKey="home">Home</Nav.Link>
+                            <Nav.Link eventKey="home">Home</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link eventKey="profile">Profile</Nav.Link>
@@ -41,11 +43,10 @@ function Dashboard() {
                 </Col>
                 <Col sm={9}>
                     <Tab.Content>
-                        <Tab.Pane eventKey="home"><Home/></Tab.Pane>
+                        <Tab.Pane eventKey="home"><Home setKey={setKey}/></Tab.Pane>
                         <Tab.Pane eventKey="profile"><Profile /></Tab.Pane>
                         <Tab.Pane eventKey="logFood"><LogFood /></Tab.Pane>
                         <Tab.Pane eventKey="myMeals"><MyMeals /></Tab.Pane>
-
                     </Tab.Content>
                 </Col>
             </Row>
