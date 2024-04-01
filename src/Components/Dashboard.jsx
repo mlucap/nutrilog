@@ -1,12 +1,11 @@
 import React from 'react'
 import { Container, Row, Col, Tab, Nav, Image} from 'react-bootstrap'
 import "../css/Dashboard.scss"
+import Home from "./Dashboard/Home.jsx"
+import Profile from './Dashboard/Profile.jsx'
+import LogFood from './Dashboard/LogFood.jsx'
+import MyMeals from './Dashboard/MyMeals.jsx'
 
-function Home() {
-    return (
-        <h1>test</h1>
-    )
-}
 function Dashboard() {
   return (
     <>
@@ -43,9 +42,9 @@ function Dashboard() {
                 <Col sm={9}>
                     <Tab.Content>
                         <Tab.Pane eventKey="home"><Home/></Tab.Pane>
-                        <Tab.Pane eventKey="profile">Profile Content</Tab.Pane>
-                        <Tab.Pane eventKey="logFood">Log Food</Tab.Pane>
-                        <Tab.Pane eventKey="myMeals">My Meals</Tab.Pane>
+                        <Tab.Pane eventKey="profile"><Profile /></Tab.Pane>
+                        <Tab.Pane eventKey="logFood"><LogFood /></Tab.Pane>
+                        <Tab.Pane eventKey="myMeals"><MyMeals /></Tab.Pane>
 
                     </Tab.Content>
                 </Col>
