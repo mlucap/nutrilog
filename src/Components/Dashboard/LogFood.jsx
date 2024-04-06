@@ -15,18 +15,16 @@ const LogFood = () => {
   
   
   const fetchData = () => {
-    
-    
-     axios.get('https://trackapi.nutritionix.com/v2/search/instant/?query=' + query,{
-        'method': 'GET',
+    axios.get('https://trackapi.nutritionix.com/v2/natural/nutrients', {
+      "query": query
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-app-id': '968bd7eb',
+        'x-app-key': 'e8369dfb80102c698fb218bc806b46c5'
         
-        'headers': {
-          'Content-Type': 'application/json',
-          'x-app-id': '968bd7eb',
-          'x-app-key': 'e2915e803dda31e9b9fd9b18eb8c57f8'
-        }
-      })
-
+      }
+    })
       .then((response) => {
         if (response.data !== undefined) {
           setData(response.data);
@@ -34,33 +32,33 @@ const LogFood = () => {
         }
         console.log(response.data);
       })
-      .catch((err) => {
-        console.log(`error: ${err}`);
-      });
+      .catch((err) => 
+        console.log(`error: ${err}`)
+      );
   };
 
   useEffect(() => fetchData(), [query]);
-  
 
   return (
     <div>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          setQuery(e.target.elements[0].value);
-          console.log(e.target.elements[0].value);
+          setQuery(e.target.elements.query.value);
+          console.log(e.target.elements.query.value);
         }}
       >
         <Form.Group>
           <Form.Label>Search Food</Form.Label>
-          <Form.Control type="text" />
+          <Form.Control type="text" name="query" />
         </Form.Group>
         <Button type="submit" variant="dark">
-          search
+          Search
         </Button>
       </Form>
 
-      {found ? <p>{data.food_name}</p> : <p>No result</p>}
+      
+      {found ? <p>{data.branded[0].nf_calories}</p> : <p>No result</p>}
     </div>
   );
 };
