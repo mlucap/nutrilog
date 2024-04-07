@@ -3,9 +3,6 @@ import { useState } from 'react'
 import { Card, Button, Modal } from 'react-bootstrap'
 
 function MyMeals(props) {
-  const handleClick = (i) => {
-    console.log(i)
-  }
   const [show, setShow] = useState(false);
   // state holds the item to be deleted
   const [onDeck, setOnDeck] = useState(0);
@@ -14,6 +11,9 @@ function MyMeals(props) {
   const handleShow = () => setShow(true);
   return (
     <>
+    {
+      // conditionally show food items
+      props.food.length > 1? 
       <ol>
         {props.food.map((item, i) => {
           return (
@@ -33,6 +33,13 @@ function MyMeals(props) {
           )
         })}
       </ol>
+      :
+      <Card>
+        <Card.Body>
+          <Card.Title>No Food Items Found</Card.Title>
+        </Card.Body>
+      </Card>
+    }
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
