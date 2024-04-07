@@ -1,0 +1,15 @@
+#foodSearchResultContainer {
+    height: 55vh;
+    overflow: scroll;
+}
+
+#customMacroContainer {
+    display: inline-flex;
+    gap: 1em;
+}
+
+#macroGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
