@@ -24,7 +24,7 @@ const LogFood = (props) => {
     axios.get(`https://trackapi.nutritionix.com/v2/search/instant?query=${query}`, {
       headers: {
         'Content-Type': 'application/json',
-        'x-app-id': "968bd7eb",
+        'x-app-id': "1501c75a",
         'x-app-key': "1c78fcb499185d93e02263ec15210947"
       }
     })
