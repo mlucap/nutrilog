@@ -29,10 +29,10 @@ function Dashboard() {
         [
             {
                 name: "name",
-                calories: 0,
+                total: 0,
                 carbs: 0,
                 protein: 0,
-                fat: 0
+                fats: 0
             },
             {
                 ...

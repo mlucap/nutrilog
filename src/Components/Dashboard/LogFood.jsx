@@ -57,10 +57,10 @@ const LogFood = (props) => {
       ...prev,
       {
         name: name,
-        calories: calories,
+        total: calories,
         carbs: carbs,
         protein: protein,
-        fat: fat
+        fats: fat
       }
     ]);
 
