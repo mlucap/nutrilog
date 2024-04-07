@@ -16,6 +16,8 @@ function Navigation() {
             <Link className="navLink" to='/dashboard'>Dashboard</Link>
             <Link className="navLink" to="/login">Login</Link>
             <Link className="navLink" to="/register">Register</Link>
+            <Link className="navLink" to="/">Log Out</Link>
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

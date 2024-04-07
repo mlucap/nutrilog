@@ -8,6 +8,7 @@ const Home = (props) => {
   const day = new Intl.DateTimeFormat("en-US", {weekday: "long"}).format(date);
   // get month in Intl format
   const month = new Intl.DateTimeFormat("en-US", {month: "long"}).format(date);
+  console.log(props.carbsGoal);
     return (
       <>
         <div id="dashboardHomeContainer">
@@ -27,16 +28,23 @@ const Home = (props) => {
 
           <div id="dashboardHomeMacros">
             <div className="macro">
-              <h1>{props.carbs}/{props.carbGoal}g</h1>
+              <h1>{props.carbs}/{props.carbsGoal}g</h1>
               <h1>Carbs</h1>
             </div>
             <div className="macro">
-              <h1>{props.protein}g</h1>
+              <h1>{props.protein}/{props.proteinGoal}g</h1>
+
               <h1>Protein</h1>
             </div>
             <div className="macro">
-              <h1>{props.fat}g</h1>
-              <h1>Fat</h1>
+              <h1>{props.fats}/{props.fatsGoal}g</h1>
+              <h1>Fats</h1>
+              
+            </div>
+            <div className="macro">
+              
+              <h1>{props.totalMacroGoals}/{props.currentMacroTotals}g</h1>
+              <h1>Goal</h1>
             </div>
           </div>
 
