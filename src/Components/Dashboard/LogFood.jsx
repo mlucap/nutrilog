@@ -75,11 +75,15 @@ const LogFood = (props) => {
       protein: +oldProtein + +protein,
       fats: +oldFat + +fat
     })
-    console.log(props.macros)
 
     // show a message of success in adding the food item for 1s (1000ms)
     setShowAlert(true)
     setTimeout(() => {setShowAlert(false)}, 1000)
+
+    // reset the values in the form
+    for (let index = 0; index < event.target.elements.length; index++) {
+      event.target[index].value = ""
+    }
   }
   
   return (
