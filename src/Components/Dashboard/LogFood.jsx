@@ -4,18 +4,15 @@ import { Form, Button, ListGroup, Image, Badge, Alert } from "react-bootstrap";
 import "../../css/Dashboard/LogFood.scss"
 
 const LogFood = (props) => {
-  // let url =
-  //   "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=" +
-  //   process.env.REACT_APP_API_KEY +
-  //   "&query=";
-
   const [data, setData] = useState(null);
   const [query, setQuery] = useState("");
+  const [itemId, setItemId] = useState("");
   const [found, setFound] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   
+  // used to stop rendering on component mount
   const firstRender = useRef(true);
-
+  // returns information used in the search bar
   const instantSearch = () => {
     if(firstRender.current) {
       firstRender.current = false;
@@ -45,6 +42,50 @@ const LogFood = (props) => {
     instantSearch();
     setFound(true)
   }, [query])
+
+  // used to stop rendering on component mount
+  const firstClick = useRef(true);
+  // used to get information that goes into the food array
+  const nutrientSearch = () => {
+    if(firstClick.current) {
+      firstClick.current = false;
+      return
+    }
+
+    axios.get(`https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${itemId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-app-id': "1501c75a",
+        'x-app-key': "1c78fcb499185d93e02263ec15210947"
+      }
+    })
+    .then(response => {
+      if(response.data !== undefined) {
+        console.log(response.data)
+        const name = response.data.foods[0].food_name;
+        const calories = response.data.foods[0].nf_calories;
+        const carbs = response.data.foods[0].nf_total_carbohydrate;
+        const protein = response.data.foods[0].nf_protein;
+        const fats = response.data.foods[0].nf_total_fat;
+        props.setFood((prev) => [
+          ...prev,
+          {
+            name: name,
+            total: calories,
+            carbs: carbs,
+            protein: protein,
+            fats: fats
+          }
+        ]);
+        alert();
+      }
+    })
+  }
+
+  useEffect(() => {
+    if(query.length <= 3) return;
+    nutrientSearch()
+  }, [itemId])
 
   // handle custom food form submit
   const handleSubmit = (event) => {
@@ -81,9 +122,9 @@ const LogFood = (props) => {
       fats: +oldFat + +fat
     })
 
+    
     // show a message of success in adding the food item for 1s (1000ms)
-    setShowAlert(true)
-    setTimeout(() => {setShowAlert(false)}, 1000)
+    alert();
 
     // reset the values in the form
     for (let index = 0; index < event.target.elements.length; index++) {
@@ -91,6 +132,12 @@ const LogFood = (props) => {
     }
   }
   
+  // function to show and hide the success alert
+  const alert = () => {
+    setShowAlert(true)
+    setTimeout(() => {setShowAlert(false)}, 1000)
+  }
+
   return (
     <div>
       {
@@ -99,7 +146,11 @@ const LogFood = (props) => {
           :
           <></>
       }
-      <Form>
+      <Form onSubmit={(e) => {
+        e.preventDefault()
+        e.target[0].value = ""
+        setFound(false)
+        }}>
         <Form.Group>
           <Form.Label>Search Food</Form.Label>
           <Form.Control onChange={(e) => setQuery(e.target.value)} type="text" name="query" />
@@ -109,7 +160,7 @@ const LogFood = (props) => {
                 {data?.branded.map((item, i) => {
                   return (
                     <>
-                      <ListGroup.Item>
+                      <ListGroup.Item key={i} action onClick={() => {setItemId(item.nix_item_id)}} >
                       <Image style={{
                         width: "10vh",
                         height: "10vh"
@@ -118,6 +169,7 @@ const LogFood = (props) => {
                         <h4>{item.brand_name_item_name}</h4>
                         <p>{item.food_name}</p>
                         <Badge bg="info">{item.brand_name}</Badge>
+                        <Badge bg="info" style={{marginLeft: "1vh"}}>{item.nf_calories} Calories</Badge>
                       </ListGroup.Item>
                     </>
                   )
