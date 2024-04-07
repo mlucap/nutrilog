@@ -44,7 +44,7 @@ const handleChange = (event) => {
           <Form.Control id="Fats Goal" name="fatsGoal" type="number" value={props.fatsGoal} onChange={handleChange}/>
         </Form.Group>
         <br></br>
-        <Button >Save Goal</Button>
+        <Button onClick={() => {props.setKey("home")}}>Save Goal</Button>
       </Form>
     </div>
   );

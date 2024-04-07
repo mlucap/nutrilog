@@ -72,7 +72,7 @@ const [goals,setGoals]= useState({
                 <Col sm={9}>
                     <Tab.Content>
                         <Tab.Pane eventKey="home"><Home setKey={setKey} carbs={macros.carbs} protein={macros.protein} fats={macros.fats} carbsGoal={goals.carbsGoal} proteinGoal={goals.proteinGoal} fatsGoal={goals.fatsGoal} totalMacroGoals={goals.totalCalories} currentMacroTotal={macros.total}/></Tab.Pane>
-                        <Tab.Pane eventKey="profile"><Profile carbsGoal={goals.carbsGoal} proteinGoal={goals.proteinGoal} fatsGoal={goals.fatsGoal} totalCalories={goals.totalCalories} setGoals={setGoals}/></Tab.Pane>
+                        <Tab.Pane eventKey="profile"><Profile setKey={setKey} carbsGoal={goals.carbsGoal} proteinGoal={goals.proteinGoal} fatsGoal={goals.fatsGoal} totalCalories={goals.totalCalories} setGoals={setGoals}/></Tab.Pane>
                         <Tab.Pane eventKey="logFood"><LogFood /></Tab.Pane>
                         <Tab.Pane eventKey="myMeals"><MyMeals /></Tab.Pane>
                     </Tab.Content>
