@@ -8,7 +8,6 @@ const Home = (props) => {
   const day = new Intl.DateTimeFormat("en-US", {weekday: "long"}).format(date);
   // get month in Intl format
   const month = new Intl.DateTimeFormat("en-US", {month: "long"}).format(date);
-  console.log(props.carbsGoal);
     return (
       <>
         <div id="dashboardHomeContainer">

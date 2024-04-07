@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Form, Button, ListGroup, Image, Badge, Alert } from "react-bootstrap";
 import "../../css/Dashboard/LogFood.scss"
@@ -14,19 +14,29 @@ const LogFood = (props) => {
   const [found, setFound] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   
+  const firstRender = useRef(true);
+
   const instantSearch = () => {
+    if(firstRender.current) {
+      firstRender.current = false;
+      return
+    }
     axios.get(`https://trackapi.nutritionix.com/v2/search/instant?query=${query}`, {
       headers: {
         'Content-Type': 'application/json',
+<<<<<<< HEAD
         'x-app-id': "968bd7eb",
         'x-app-key': "91d3255d47123994372517583815d49b"
+=======
+        'x-app-id': "1501c75a",
+        'x-app-key': "1c78fcb499185d93e02263ec15210947"
+>>>>>>> refs/remotes/origin/main
       }
     })
       .then(response => {
         if(response.data !== undefined) {
           setData(response.data)
           setFound(true)
-          console.log(response.data)
         }
       })
       .catch(error => console.log(error))
@@ -39,7 +49,7 @@ const LogFood = (props) => {
     };
     instantSearch();
     setFound(true)
-  }, [query, instantSearch])
+  }, [query])
 
   // handle custom food form submit
   const handleSubmit = (event) => {
