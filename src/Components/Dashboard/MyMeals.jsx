@@ -13,7 +13,7 @@ function MyMeals(props) {
     <>
     {
       // conditionally show food items
-      props.food.length > 1? 
+      props.food.length > 0? 
       <ol>
         {props.food.map((item, i) => {
           return (
