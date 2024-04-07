@@ -19,7 +19,7 @@ const LogFood = (props) => {
       headers: {
         'Content-Type': 'application/json',
         'x-app-id': "968bd7eb",
-        'x-app-key': "e8369dfb80102c698fb218bc806b46c5"
+        'x-app-key': "91d3255d47123994372517583815d49b"
       }
     })
       .then(response => {

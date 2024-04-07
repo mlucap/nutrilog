@@ -28,11 +28,11 @@ const Home = (props) => {
 
           <div id="dashboardHomeMacros">
             <div className="macro">
-              <h1>{props.macros.carbs}/{props.goals.carbsGoal}g</h1>
+              <h1>{props.macros.carbs}/{props.goals.carbsGoal}*g</h1>
               <h1>Carbs</h1>
             </div>
             <div className="macro">
-              <h1>{props.macros.protein}/{props.goals.proteinGoal}g</h1>
+              <h1>{props.macros.protein}/{props.goals.proteinGoal * props.goals.totalCalories}g</h1>
 
               <h1>Protein</h1>
             </div>
