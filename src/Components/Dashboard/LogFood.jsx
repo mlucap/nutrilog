@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Form, Button, ListGroup, Image, Badge } from "react-bootstrap";
+import { Form, Button, ListGroup, Image, Badge, Alert } from "react-bootstrap";
 import "../../css/Dashboard/LogFood.scss"
 
-const LogFood = () => {
+const LogFood = (props) => {
   // let url =
   //   "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=" +
   //   process.env.REACT_APP_API_KEY +
@@ -12,6 +12,7 @@ const LogFood = () => {
   const [data, setData] = useState(null);
   const [query, setQuery] = useState("");
   const [found, setFound] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   
   const instantSearch = () => {
     axios.get(`https://trackapi.nutritionix.com/v2/search/instant?query=${query}`, {
@@ -39,9 +40,56 @@ const LogFood = () => {
     instantSearch();
     setFound(true)
   }, [query, instantSearch])
+
+  // handle custom food form submit
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // getting values from form submit
+    const name = event.target[0].value;
+    const calories = event.target[1].value; 
+    const carbs = event.target[2].value; 
+    const protein = event.target[3].value; 
+    const fat = event.target[4].value; 
+
+    // takes previous state of array and adds a new object to it.
+    props.setFood((prev) => [
+      ...prev,
+      {
+        name: name,
+        calories: calories,
+        carbs: carbs,
+        protein: protein,
+        fat: fat
+      }
+    ]);
+
+    const oldCals = props.macros.total;
+    const oldCarbs = props.macros.total;
+    const oldProtein = props.macros.total;
+    const oldFat = props.macros.total;
+
+    props.setMacros({
+      total: +oldCals + +calories,
+      carbs: +oldCarbs + +carbs,
+      protein: +oldProtein + +protein,
+      fats: +oldFat + +fat
+    })
+    console.log(props.macros)
+
+    // show a message of success in adding the food item for 1s (1000ms)
+    setShowAlert(true)
+    setTimeout(() => {setShowAlert(false)}, 1000)
+  }
   
   return (
     <div>
+      {
+        showAlert ? 
+          <Alert variant="success">Added new food item!</Alert>
+          :
+          <></>
+      }
       <Form>
         <Form.Group>
           <Form.Label>Search Food</Form.Label>
@@ -71,6 +119,9 @@ const LogFood = () => {
           }
         </Form.Group>
         <br />
+      </Form>
+
+      <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Can't find your food? Add it here!</Form.Label>
           <br />
@@ -105,7 +156,7 @@ const LogFood = () => {
             </div>
           </div>
           <br />
-          <Button variant="success">Add</Button>
+          <Button type="submit" variant="success">Add</Button>
         </Form.Group>
       </Form>
       <br />

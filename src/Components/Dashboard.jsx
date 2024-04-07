@@ -10,33 +10,37 @@ import MyMeals from './Dashboard/MyMeals.jsx'
 function Dashboard() {
   const [key, setKey] = useState("home");
 
-  // state variables for macros
-//   const [carbs, setCarbs] = useState(10);
-//   const [protein, setProtein] = useState(9);
-//   const [fat, setFat] = useState(12);
-const [goals,setGoals]= useState({
+  const [goals,setGoals]= useState({
     totalCalories : 0,
     carbsGoal: 0,
     proteinGoal : 0,
     fatsGoal : 0
   })
+
   const [macros,setMacros]= useState({
     total:0,
     carbs: 0,
     protein : 0,
     fats : 0
   })
-  
 
-  
+  // expected
+    {/* 
+        [
+            {
+                name: "name",
+                calories: 0,
+                carbs: 0,
+                protein: 0,
+                fat: 0
+            },
+            {
+                ...
+            }
+        ]
+    */}
+  const [food, setFood] = useState([])
 
-  
-    
-  
-
-//   const [carbGoal, setCarbGoal] = useState(100);
-//   const [proteinGoal, setProteinGoal] = useState(100);
-//   const [fatGoal, setFatGoal] = useState(100);
   return (
     <>
     <Tab.Container defaultActiveKey={key} activeKey={key} onSelect={(k) => setKey(k)}>
@@ -71,10 +75,10 @@ const [goals,setGoals]= useState({
                 </Col>
                 <Col sm={9}>
                     <Tab.Content>
-                        <Tab.Pane eventKey="home"><Home setKey={setKey} carbs={macros.carbs} protein={macros.protein} fats={macros.fats} carbsGoal={goals.carbsGoal} proteinGoal={goals.proteinGoal} fatsGoal={goals.fatsGoal} totalMacroGoals={goals.totalCalories} currentMacroTotal={macros.total}/></Tab.Pane>
+                        <Tab.Pane eventKey="home"><Home setKey={setKey} macros={macros} goals={goals}/></Tab.Pane>
                         <Tab.Pane eventKey="profile"><Profile setKey={setKey} carbsGoal={goals.carbsGoal} proteinGoal={goals.proteinGoal} fatsGoal={goals.fatsGoal} totalCalories={goals.totalCalories} setGoals={setGoals}/></Tab.Pane>
-                        <Tab.Pane eventKey="logFood"><LogFood /></Tab.Pane>
-                        <Tab.Pane eventKey="myMeals"><MyMeals /></Tab.Pane>
+                        <Tab.Pane eventKey="logFood"><LogFood setFood={setFood} food={food} setMacros={setMacros} macros={macros}/></Tab.Pane>
+                        <Tab.Pane eventKey="myMeals"><MyMeals food={food} /></Tab.Pane>
                     </Tab.Content>
                 </Col>
             </Row>
