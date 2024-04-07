@@ -21,7 +21,7 @@ const Home = (props) => {
             </div>
             <div id="dashboardHomeDay">
               <p>{day}, {month}</p>
-              <h1>{date.getDay()}</h1>
+              <h1>{date.getDate()}</h1>
               <h3>{date.getFullYear()}</h3>
             </div>
           </div>
