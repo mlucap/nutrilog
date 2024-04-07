@@ -41,6 +41,13 @@ function Dashboard() {
     */}
   const [food, setFood] = useState([])
 
+  const handleRemoveItem = (i) => {
+    // removes the index item from the array by setting it to the items before
+    // and after while leaving out index i
+    setFood([...food.slice(0, i), ...food.slice(i + 1)]);
+    // PROBLEM: does not remove from the 'macros' state
+  }
+
   return (
     <>
     <Tab.Container defaultActiveKey={key} activeKey={key} onSelect={(k) => setKey(k)}>
@@ -78,7 +85,7 @@ function Dashboard() {
                         <Tab.Pane eventKey="home"><Home setKey={setKey} macros={macros} goals={goals}/></Tab.Pane>
                         <Tab.Pane eventKey="profile"><Profile setKey={setKey} carbsGoal={goals.carbsGoal} proteinGoal={goals.proteinGoal} fatsGoal={goals.fatsGoal} totalCalories={goals.totalCalories} setGoals={setGoals}/></Tab.Pane>
                         <Tab.Pane eventKey="logFood"><LogFood setFood={setFood} food={food} setMacros={setMacros} macros={macros}/></Tab.Pane>
-                        <Tab.Pane eventKey="myMeals"><MyMeals food={food} /></Tab.Pane>
+                        <Tab.Pane eventKey="myMeals"><MyMeals food={food} removeItem={handleRemoveItem}/></Tab.Pane>
                     </Tab.Content>
                 </Col>
             </Row>
