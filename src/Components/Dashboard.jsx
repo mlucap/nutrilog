@@ -44,11 +44,25 @@ function Dashboard() {
   const [food, setFood] = useState([])
 
   const handleRemoveItem = (i) => {
-    // removes the index item from the array by setting it to the items before
-    // and after while leaving out index i
-    setFood([...food.slice(0, i), ...food.slice(i + 1)]);
-    // PROBLEM: does not remove from the 'macros' state
+    // Removes the index item from the array by setting it to the items before and after while leaving out index i
+    const newFoodArray = [...food.slice(0, i), ...food.slice(i + 1)];
+  
+    // Update food state
+    setFood(newFoodArray);
+  
+    // Calculate new macros
+    const newMacros = newFoodArray.reduce((acc, item) => {
+      acc.carbs += item.carbs;
+      acc.protein += item.protein;
+      acc.fats += item.fats;
+      acc.total += item.total;
+      return acc;
+    }, { carbs: 0, protein: 0, fats: 0, total: 0 });
+  
+    // Update macros state
+    setMacros(newMacros);
   }
+  
 
   return (
     <>
@@ -90,7 +104,7 @@ function Dashboard() {
                         <Tab.Pane eventKey="home"><Home setKey={setKey} macros={macros} goals={goals}/></Tab.Pane>
                         <Tab.Pane eventKey="profile"><Profile setKey={setKey} goals={goals} setGoals={setGoals}/></Tab.Pane>
                         <Tab.Pane eventKey="logFood"><LogFood setFood={setFood} food={food} setMacros={setMacros} macros={macros}/></Tab.Pane>
-                        <Tab.Pane eventKey="myMeals"><MyMeals food={food} removeItem={handleRemoveItem}/></Tab.Pane>
+                        <Tab.Pane eventKey="myMeals"><MyMeals food={food} removeItem={handleRemoveItem} macros={macros}/></Tab.Pane>
                     </Tab.Content>
                 </Col>
             </Row>

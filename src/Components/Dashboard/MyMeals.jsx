@@ -7,8 +7,12 @@ function MyMeals(props) {
   // state holds the item to be deleted
   const [onDeck, setOnDeck] = useState(0);
 
+  //const {carbs, protein, fats, total} = props;
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  
   return (
     <>
     {
@@ -27,6 +31,7 @@ function MyMeals(props) {
                 <Button variant='danger' onClick={() => {
                   handleShow()
                   setOnDeck(i)
+                  
                 }}>Delete</Button>
               </Card.Body>
             </Card>
@@ -53,6 +58,7 @@ function MyMeals(props) {
           <Button variant="danger" onClick={() => {
             handleClose()
             props.removeItem(onDeck)
+            
             }}>
             Delete
           </Button>

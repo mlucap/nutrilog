@@ -1,18 +1,22 @@
-import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
 
+const Profile = ({ goals, setGoals, setKey }) => {
+  const [error, setError] = useState(false); // State for tracking the error condition
 
-const Profile = (props) => {
-  const { totalCalories, carbsGoal, proteinGoal, fatsGoal } = props;
-
-  const sumTotalCalories = props.carbsGoal + props.proteinGoal + props.fatsGoal;
+  // Function to calculate the total percentage of macros and check for errors
+  const checkTotalPercentage = (newGoals) => {
+    const totalPercentage = parseFloat(newGoals.carbsGoal || 0) + parseFloat(newGoals.proteinGoal || 0) + parseFloat(newGoals.fatsGoal || 0);
+    setError(totalPercentage > 100); // Set error if total exceeds 100%
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    props.setGoals((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    // Prevents entering a negative value
+    const newValue = value < 0 ? '0' : value;
+    const newGoals = { ...goals, [name]: newValue };
+    setGoals(newGoals);
+    checkTotalPercentage(newGoals); // Check total percentage whenever a goal changes
   };
 
   return (
@@ -21,49 +25,47 @@ const Profile = (props) => {
         <Form.Group>
           <Form.Label>Daily Calorie Goal</Form.Label>
           <Form.Control
-            id="Calorie Goal"
             name="totalCalories"
             type="number"
+            value={goals.totalCalories}
             onChange={handleChange}
           />
         </Form.Group>
-
         <Form.Group>
           <Form.Label>% of calories from Carbohydrates</Form.Label>
           <Form.Control
-            id="Carbs Goal"
             name="carbsGoal"
             type="number"
+            value={goals.carbsGoal}
             onChange={handleChange}
           />
         </Form.Group>
-
         <Form.Group>
           <Form.Label>% of calories from Protein</Form.Label>
           <Form.Control
-            id="Protein Goal"
             name="proteinGoal"
             type="number"
+            value={goals.proteinGoal}
             onChange={handleChange}
           />
         </Form.Group>
-
         <Form.Group>
           <Form.Label>% of calories from Fats</Form.Label>
           <Form.Control
-            id="Fats Goal"
             name="fatsGoal"
             type="number"
+            value={goals.fatsGoal}
             onChange={handleChange}
           />
         </Form.Group>
-        <br></br>
+        {error && <Alert variant="danger">The total percentage of carbs, protein, and fats cannot exceed 100%.</Alert>} {/* Error message */}
+        <br />
         <Button
-          onClick={() => {
-            props.setKey("home");
-          }}
+          variant="primary"
+          onClick={() => !error && setKey("home")}
+          disabled={error} // Disable the button if there's an error
         >
-          Save Goal
+          Save Goals
         </Button>
       </Form>
     </div>
