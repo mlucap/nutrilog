@@ -30,7 +30,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="color-overlay d-flex justify-content-center align-items-center">
+    <div style={{height: "100%"}} className="color-overlay d-flex justify-content-center ">
       <Form className="roundedvp-4 p-sm-3" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="forBasicEmail">
           <Form.Label>Email Address</Form.Label>

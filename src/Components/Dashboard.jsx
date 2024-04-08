@@ -77,7 +77,7 @@ function Dashboard() {
                         <Image src='https://placehold.co/28x28' roundedCircle />
                         <p>User</p>
                     
-                        <Button  variant='danger' size='sm' onClick={()=>navigate('/')}> LogOut</Button>
+                        <Button style={{marginLeft: "1em"}} variant='danger' size='sm' onClick={()=>navigate('/')}> LogOut</Button>
                     </span>
                 </Col>
             </Row>
