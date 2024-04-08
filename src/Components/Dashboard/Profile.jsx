@@ -63,7 +63,7 @@ const Profile = ({ goals, setGoals, setKey }) => {
         <Button
           variant="primary"
           onClick={() => !error && setKey("home")}
-          disabled={error} // Disable the button if there's an error
+          disabled={error} 
         >
           Save Goals
         </Button>

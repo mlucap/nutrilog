@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Tab, Nav, Image} from 'react-bootstrap'
+import { Container, Row, Col, Tab, Nav, Image, Button} from 'react-bootstrap'
 import { useState } from 'react'
 import "../css/Dashboard.scss"
 import Home from "./Dashboard/Home.jsx"
@@ -77,7 +77,7 @@ function Dashboard() {
                         <Image src='https://placehold.co/28x28' roundedCircle />
                         <p>User</p>
                     
-                        <button onClick={()=>navigate('/')}> LogOut</button>
+                        <Button  variant='danger' size='sm' onClick={()=>navigate('/')}> LogOut</Button>
                     </span>
                 </Col>
             </Row>
