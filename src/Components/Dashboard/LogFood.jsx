@@ -78,6 +78,17 @@ const LogFood = (props) => {
           }
         ]);
         alert();
+        const oldCals = props.macros.total;
+        const oldCarbs = props.macros.total;
+        const oldProtein = props.macros.total;
+        const oldFat = props.macros.total;
+
+        props.setMacros({
+          total: parseFloat(oldCals) + parseFloat(calories),
+          carbs: parseFloat(oldCarbs) + parseFloat(carbs),
+          protein: parseFloat(oldProtein) + parseFloat(protein),
+          fats: parseFloat(oldFat) + parseFloat(fats)
+        })
       }
     })
   }
@@ -116,10 +127,10 @@ const LogFood = (props) => {
     const oldFat = props.macros.total;
 
     props.setMacros({
-      total: +oldCals + +calories,
-      carbs: +oldCarbs + +carbs,
-      protein: +oldProtein + +protein,
-      fats: +oldFat + +fat
+      total: parseFloat(oldCals) + parseFloat(calories),
+      carbs: parseFloat(oldCarbs) + parseFloat(carbs),
+      protein: parseFloat(oldProtein) + parseFloat(protein),
+      fats: parseFloat(oldFat) + parseFloat(fat)
     })
 
     
