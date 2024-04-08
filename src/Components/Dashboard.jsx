@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 function Dashboard() {
   const [key, setKey] = useState("home");
   const navigate = useNavigate();
+  const [user, setUser] = useState("User");
 
   const [goals,setGoals]= useState({
     totalCalories : 0,
@@ -75,7 +76,7 @@ function Dashboard() {
                 <Col sm={9}>
                     <span id='user'>
                         <Image src='https://placehold.co/28x28' roundedCircle />
-                        <p>User</p>
+                        <p>{user}</p>
                     
                         <Button style={{marginLeft: "1em"}} variant='danger' size='sm' onClick={()=>navigate('/')}> LogOut</Button>
                     </span>

@@ -25,6 +25,10 @@ const Home = (props) => {
             </div>
           </div>
 
+          <div id="goalMacro">
+            <h1>{props.macros.total}/{props.goals.totalCalories}g Calorie Goal</h1>
+          </div>
+
           <div id="dashboardHomeMacros">
             <div className="macro">
               <h1>{props.macros.carbs}/{(props.goals.carbsGoal/100) * props.goals.totalCalories}g</h1>
@@ -39,11 +43,6 @@ const Home = (props) => {
               <h1>{props.macros.fats}/{(props.goals.fatsGoal/100)* props.goals.totalCalories}g</h1>
               <h1>Fats</h1>
               
-            </div>
-            <div className="macro">
-              
-              <h1>{props.macros.total}/{props.goals.totalCalories}g</h1>
-              <h1>Goal</h1>
             </div>
           </div>
 
